@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors')
 const mongoose = require('mongoose');
-const serverless= require('serverless-http')
 require('dotenv').config();
 
 const  uri = process.env.ATLAS_URI;
@@ -27,5 +26,7 @@ app.get('/',(req,res)=>{
     res.send('Server Running')
 })
 
-module.exports.helper = serverless(app)
+app.listen(port,()=>{
+    console.log(`Listening on port:${port}`)
+})
 
