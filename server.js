@@ -22,6 +22,9 @@ app.use(express.json());
 app.use('/users',userRouter)
 app.use('/orders',orderRouter)
 
+app.get('/',(req,res)=>{
+    res.send('Server Running')
+})
 
 app.listen(port,()=>{
     console.log(`Listening on part:${port}`)
