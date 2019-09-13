@@ -27,6 +27,6 @@ app.get('/',(req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log(`Listening on part:${port}`)
+    console.log(`Listening on port:${port}`)
 })
 
