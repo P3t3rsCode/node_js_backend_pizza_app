@@ -13,8 +13,10 @@ user_controller.sendOTP = ({ph_no})=>{
 }
 
 user_controller.verifyOTP =async ({otp,ph_no})=>{
-   let user = User.find((item)=>item.ph_no=ph_no);
-   if(user.otp==otp) return 'success';
+    let phNo ='44';
+    phNo+= ph_no;
+   let user = await User.find({ph_no:phNo});
+   if(user[0].otp==otp) return 'success';
    return 'failed'
    
 }

@@ -10,8 +10,11 @@ router.route('/sendOTP').post((req,res)=>{
 
 
 router.route('/verifyOTP').post((req,res)=>{
-  
-    res.send(User.verifyOTP(req.body))
+    User.verifyOTP(req.body).then(result=>res.send(result))
+ })
+
+ router.route('/test').get((req,res)=>{
+     res.send('helllo');
  })
 
 
