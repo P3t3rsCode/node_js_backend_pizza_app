@@ -21,10 +21,19 @@ user_controller.verifyOTP =async ({otp,ph_no})=>{
    
 }
 
-user_controller.create_user = (phNo,otp)=>{
-    let user = new User();
-    user.otp=otp;
-    user.ph_no=phNo;
-    user.save();
-
+user_controller.create_user =async (phNo,otp)=>{
+    let user_present = await User.find({ph_no:phNo});
+    if(!user_present[0]){
+        console.log('new user')
+        let user = new User();
+        user.otp=otp;
+        user.ph_no=phNo;
+        user.save();
+    }
+    else{
+        let id = user_present[0].id;
+        User.findById(id)
+        .then(user=> {user.otp=otp; user.save()})
+    }
+   
 }
