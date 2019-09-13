@@ -14,11 +14,14 @@ connection.once('open',()=>{
 const app = express();
 const port = process.env.PORT || 3001;
 const userRouter = require('./routes/user.routes')
+const orderRouter = require('./routes/order.routes')
 
 
 app.use(cors());
 app.use(express.json());
 app.use('/users',userRouter)
+app.use('/orders',orderRouter)
+
 
 app.listen(port,()=>{
     console.log(`Listening on part:${port}`)
