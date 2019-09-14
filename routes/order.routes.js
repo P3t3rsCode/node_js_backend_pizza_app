@@ -1,14 +1,13 @@
-const router = require('express').Router();
-let Order = require('../controllers/order.controller')
+const router = require("express").Router();
+let Order = require("../controllers/order.controller");
 
+router.route("/placeOrder").post((req, res) => {
+  res.send(Order.create_order(req.body));
+});
 
+router.route("/AllItems").get(async (req, res) => {
+  let temp = await Order.get_all_items();
+  res.jsonp(temp);
+});
 
-router.route('/placeOrder').post((req,res)=>{
-  
-   res.send(Order.create_order(req.body))
-})
-
-
-
-
-module.exports=router;
+module.exports = router;
